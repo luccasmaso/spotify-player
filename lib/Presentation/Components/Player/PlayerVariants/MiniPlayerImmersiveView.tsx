@@ -64,7 +64,7 @@ export default function MiniPlayerImmersiveView({ onClose } : any) {
           {playbackState !== 'error' && (
             <>
               <div className='flex items-center gap-4 px-4'>
-                <div className='text-sm'>{formatTime(timeElapsed)}</div>
+                <div className='text-sm w-[50px]'>{formatTime(timeElapsed)}</div>
                 <div className='flex-1 h-[2px] m-auto' style={{ backgroundColor: 'currentColor' }}>
                   <div 
                     className='relative -top-[2px] h-1' 
@@ -73,7 +73,7 @@ export default function MiniPlayerImmersiveView({ onClose } : any) {
                     {playbackState !== 'idle' && <div className='absolute w-4 h-4 rounded-full -right-1 -top-1.5' style={{ backgroundColor: 'currentColor' }} />}
                   </div>
                 </div>
-                <div className='text-sm'>{formatTime(player!.audioElement.duration * 1000)}</div>
+                <div className='text-sm w-[50px] flex justify-end'>{formatTime(player!.audioElement.duration * 1000)}</div>
               </div>
               <div className='flex justify-center items-center gap-6 mt-5'>
                 <div 

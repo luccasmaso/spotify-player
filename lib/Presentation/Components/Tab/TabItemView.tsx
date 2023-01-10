@@ -6,8 +6,8 @@ export default function TabItemView(props : any) {
   const router = useRouter()
 
   const style = router.pathname === props.route || router.pathname === props.reference
-    ? 'border-black bg-black text-white active:bg-neutral-500 focus:bg-black focus:outline-none focus:ring focus:ring-neutral-300' 
-    : 'active:bg-neutral-500 active:text-white focus:bg-neutral-50 focus:outline-none focus:ring focus:ring-neutral-300'
+    ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black active:bg-neutral-500 focus:bg-black dark:focus:bg-white focus:outline-none focus:ring focus:ring-neutral-300 dark:focus:ring-neutral-600' 
+    : 'active:bg-neutral-500 active:text-white dark:active:text-black focus:bg-neutral-50 focus:outline-none focus:ring focus:ring-neutral-300'
 
   return (
     <Link 

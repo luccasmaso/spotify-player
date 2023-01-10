@@ -30,10 +30,10 @@ export default function TrackDetailedView(props: {
   return (
     <div 
       className={`
-        relative active:top-px hidden md:flex transition group hover:bg-neutral-50 rounded py-3 select-none 
-        focus:bg-neutral-50 focus:outline-none
+        relative active:top-px hidden md:flex transition group hover:bg-neutral-50 dark:hover:bg-neutral-900 rounded py-3 select-none 
+        focus:bg-neutral-50 focus:dark:bg-neutral-900 focus:outline-none
         ${props.tableSettings.style}
-        ${viewModel.isPlaying() && 'bg-neutral-50'}
+        ${viewModel.isPlaying() && 'bg-neutral-50 dark:bg-neutral-900'}
       `}
       onDoubleClick={() => play()}
       tabIndex={0}

@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
   if (!config.ready) return
 
   return (
-    <div className={`flex flex-col md:w-9/12 m-auto min-h-screen pb-20 px-2 md:px-0 ${fonts()}`}>
+    <div className={`flex flex-col md:w-9/12 m-auto min-h-screen pb-20 ${fonts()}`}>
       <StoreProvider>
         <UseCasesProvider useCases={config.useCases!}>
           <>

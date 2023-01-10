@@ -18,12 +18,12 @@ export default function MiniPlayerBarView({ onOpen } : any) {
   return (
     <motion.div 
       variants={miniLayout} initial="hidden" animate="visible"
-      className='block md:hidden w-screen h-16 fixed left-0 bottom-0 bg-white shadow'
+      className='block md:hidden cursor-pointer w-screen h-16 fixed left-0 bottom-0 bg-white dark:bg-black shadow'
       onClick={onOpen}
     >
-      <div className='flex-1 h-px bg-neutral-800 m-auto'>
+      <div className='flex-1 h-px bg-neutral-800 dark:bg-neutral-100 m-auto'>
         <div 
-          className='relative -top-[2px] h-1 bg-black' 
+          className='relative -top-[2px] h-1 bg-black dark:bg-white' 
           style={{ width: `${(playbackState === 'idle' ? 0 : progress / (player!.audioElement.duration * 1000)) * 100}%` }}
         />
       </div>
