@@ -18,6 +18,10 @@ export default class LocalStorage implements Database {
     throw new Error('Method not implemented.')
   }
 
+  async getLikedTracksIds(): Promise<any> {
+    throw new Error('Method not implemented.')
+  }
+
   likeTrack(track: any) {
     throw new Error('Method not implemented.')
   }
