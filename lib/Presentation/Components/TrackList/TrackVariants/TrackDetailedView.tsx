@@ -14,7 +14,8 @@ export default function TrackDetailedView(props: {
   position: number,
   track: Track,
   trackList: TrackList,
-  tableSettings: any
+  tableSettings: any,
+  height: number
 }) {
 
   const viewModel = useViewModel(props.track)
@@ -30,13 +31,14 @@ export default function TrackDetailedView(props: {
   return (
     <div 
       className={`
-        relative active:top-px hidden md:flex transition group hover:bg-neutral-50 rounded py-3 select-none 
+        relative active:top-px hidden md:flex items-center transition group hover:bg-neutral-50 rounded select-none 
         focus:bg-neutral-50 focus:outline-none
         ${props.tableSettings.style}
         ${viewModel.isPlaying() && 'bg-neutral-50'}
       `}
       onDoubleClick={() => play()}
       tabIndex={0}
+      style={{ height: props.height }}
       data-cy="track"
     >
       <div className={`${props.tableSettings.spacing[0]} flex items-center justify-center`}>

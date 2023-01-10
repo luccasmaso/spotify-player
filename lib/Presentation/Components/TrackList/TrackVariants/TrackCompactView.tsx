@@ -12,7 +12,8 @@ import useViewModel from '../TrackListViewModel'
 export default function TrackCompactView(props: {
   position: number,
   track: Track,
-  trackList: TrackList
+  trackList: TrackList,
+  height: number
 }) {
 
   const viewModel = useViewModel(props.track)
@@ -27,27 +28,30 @@ export default function TrackCompactView(props: {
 
   return (
     <div 
-      className='flex items-stretch md:hidden py-2.5 select-none focus:bg-neutral-50 hover:bg-neutral-50'
+      className='flex items-center md:hidden select-none focus:bg-neutral-50 hover:bg-neutral-50'
       onClick={() => play()}
+      style={{ height: props.height }}
     >
-      <div className='flex-1 pr-3'>
-        <div className='flex items-center -mb-0.5 gap-1.5'>
-          {viewModel.isPlaying() && <div><PlayButton width={1.1} /></div>}
-          <div className='flex-1 line-clamp-1 overflow-hidden'>{props.track.name}</div>
+      <div className='flex items-stretch flex-1'>
+        <div className='flex-1 pr-3'>
+          <div className='flex items-center -mb-0.5 gap-1.5'>
+            {viewModel.isPlaying() && <div><PlayButton width={1.1} /></div>}
+            <div className='flex-1 line-clamp-1 overflow-hidden'>{props.track.name}</div>
+          </div>
+          <div className='text-neutral-500 line-clamp-1 text-sm'>
+            {props.track.artists.map((arstist) => arstist.name).join(", ")} - {props.track.album.name}
+          </div>
         </div>
-        <div className='text-neutral-500 line-clamp-1 text-sm'>
-          {props.track.artists.map((arstist) => arstist.name).join(", ")} - {props.track.album.name}
-        </div>
-      </div>
-      <div className='flex items-center justify-center'>
-        <div 
-          className='flex shrink-0 items-center justify-center w-10 h-10 cursor-pointer text-neutral-500' 
-          onClick={(event) => { event.stopPropagation(); toggleLike() }}
-        >
-          {viewModel.liked()
-            ? <FavoritedButton width={1.5} />
-            : <FavoriteButton width={1.5} />
-          }
+        <div className='flex items-center justify-center'>
+          <div 
+            className='flex shrink-0 items-center justify-center w-10 h-10 cursor-pointer text-neutral-500' 
+            onClick={(event) => { event.stopPropagation(); toggleLike() }}
+          >
+            {viewModel.liked()
+              ? <FavoritedButton width={1.5} />
+              : <FavoriteButton width={1.5} />
+            }
+          </div>
         </div>
       </div>
     </div>
