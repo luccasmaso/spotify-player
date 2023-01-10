@@ -23,12 +23,18 @@ export const useTrack = () => {
   const getLikeTracks = async () => {
     const response = await useCases.getLikedTracks.call()
     store.setLikedTracks(response)
-    store.setLikedTracksIds(new Set(response.tracks.map((track) => track.id)))
+    getLikeTracksIds()
+  }
+
+  const getLikeTracksIds = async () => {
+    const ids = await useCases.getLikedTracksIds.call()
+    store.setLikedTracksIds(new Set(ids))
   }
 
   return {
     likedTracks: store.likedTracks, 
     likedTracksIds: store.likedTracksIds,
-    liked, like, unlike, getLikeTracks
+    likeTracksCount: store.likedTracksIds.size,
+    liked, like, unlike, getLikeTracks, getLikeTracksIds
   }
 }

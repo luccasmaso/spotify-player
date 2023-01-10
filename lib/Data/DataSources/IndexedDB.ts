@@ -53,6 +53,17 @@ export default class IndexedDB implements Database {
     })
   }
 
+  async getLikedTracksIds(): Promise<any> {
+    return new Promise((resolve) => {
+      const request = this.db!
+        .transaction('likedTracks')
+        .objectStore('likedTracks')
+        .getAllKeys()
+
+      request.onsuccess = () => resolve(request.result)
+    })
+  }
+
   likeTrack(track: any): Promise<any> {
     return new Promise((resolve) => {
       const request = this.db!

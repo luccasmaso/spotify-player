@@ -14,6 +14,7 @@ import PlayTrack from '../lib/Domain/UseCases/PlayTrack'
 import PauseTrack from '../lib/Domain/UseCases/PauseTrack'
 import SkipTrack from '../lib/Domain/UseCases/SkipTrack'
 import GetLikedTracks from '../lib/Domain/UseCases/GetLikedTracks'
+import GetLikedTracksIds from '../lib/Domain/UseCases/GetLikedTracksIds'
 import LikedTrack from '../lib/Domain/UseCases/LikedTrack'
 
 // Repositories
@@ -31,6 +32,7 @@ type Response = {
 export type UseCases = {
   getPlaylist: GetPlaylist,
   getLikedTracks: GetLikedTracks,
+  getLikedTracksIds: GetLikedTracksIds,
   likeTrack: LikeTrack,
   unlikeTrack: UnlikeTrack,
   likedTrack: LikedTrack,
@@ -66,6 +68,7 @@ export default function useInitializer(): Response {
     setUseCases({
       getPlaylist: new GetPlaylist(playlistRepository),
       getLikedTracks: new GetLikedTracks(trackRepository),
+      getLikedTracksIds: new GetLikedTracksIds(trackRepository),
       likeTrack: new LikeTrack(trackRepository),
       unlikeTrack: new UnlikeTrack(trackRepository),
       likedTrack: new LikedTrack(trackRepository),

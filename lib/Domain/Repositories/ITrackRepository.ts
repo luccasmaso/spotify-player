@@ -6,4 +6,5 @@ export default interface ITrackRepository {
   unlike(id: string): Promise<void>
   liked(id: string): Promise<boolean>
   likedTracks(): Promise<LikedTracks>
+  likedTracksIds(): Promise<[string]>
 }

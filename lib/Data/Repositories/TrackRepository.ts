@@ -28,6 +28,10 @@ export default class TrackRepository implements ITrackRepository {
     return this.mapDataToModel(tracks)
   }
 
+  async likedTracksIds(): Promise<[string]> {
+    return this.database.getLikedTracksIds()
+  }
+
   private mapDataToModel(data: any): LikedTracks {
     return LikedTracks.fromJSON(data)
   }

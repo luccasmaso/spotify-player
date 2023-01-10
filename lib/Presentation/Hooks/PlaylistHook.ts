@@ -23,7 +23,7 @@ export const usePlaylist = () => {
       store.setPlaylist(newData)
     }
     
-    track.getLikeTracks()
+    track.getLikeTracksIds()
   }
 
   return {

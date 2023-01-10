@@ -6,7 +6,7 @@ import TabItemView from './TabItemView'
 export default function TabView() {
   const track = useTrack()
 
-  const favoritesCount = !track.likedTracks ? '···' : `(${track.likedTracksIds.size})`
+  const favoritesCount = !track.likeTracksCount ? '···' : `(${track.likeTracksCount})`
 
   return (
     <div className='flex justify-center md:sticky top-0 bg-white p-6 z-10'>
