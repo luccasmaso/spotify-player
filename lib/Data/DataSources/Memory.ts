@@ -24,6 +24,10 @@ export default class Memory implements Database {
     throw new Error('Method not implemented.')
   }
 
+  getLikedTracksIds(): Promise<any> {
+    throw new Error('Method not implemented.')
+  }
+
   likeTrack(track: any) {
     throw new Error('Method not implemented.')
   }
