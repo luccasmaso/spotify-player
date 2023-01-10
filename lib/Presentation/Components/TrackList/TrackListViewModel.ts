@@ -12,6 +12,8 @@ export default function TrackListViewModel(trackItem: Track) {
 
   const [loading, setLoading] = useState<'none'|'loading'|'loaded'>('none')
 
+  
+
   function play(position: number, trackList: TrackList) {
     player.play(position, trackList)
   }
