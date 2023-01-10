@@ -2,11 +2,11 @@ import Database from "../Database/Database"
 
 export default class LocalStorage implements Database {
   
-  async init(): Promise<void> {
+  init(): Promise<void> {
     throw new Error('Method not implemented.')
   }
 
-  async getPlaylist(id: any): Promise<any> {
+  getPlaylist(id: any): Promise<any> {
     throw new Error('Method not implemented.')
   }
 
@@ -14,11 +14,11 @@ export default class LocalStorage implements Database {
     throw new Error('Method not implemented.')
   }
 
-  async getLikedTracks(): Promise<any> {
+  getLikedTracks(): Promise<any> {
     throw new Error('Method not implemented.')
   }
 
-  async getLikedTracksIds(): Promise<any> {
+  getLikedTracksIds(): Promise<any> {
     throw new Error('Method not implemented.')
   }
 
