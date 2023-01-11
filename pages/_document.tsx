@@ -8,7 +8,7 @@ export default function Document() {
       <Head>
         <meta name="description" content="Shotgun Spotify" />
       </Head>
-      <body className={fonts()}>
+      <body className={`${fonts()} dark:bg-black dark:text-white dark:antialiased`}>
         <Main />
         <NextScript />
       </body>

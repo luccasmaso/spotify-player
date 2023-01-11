@@ -10,6 +10,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/line-clamp')
   ],
+  darkMode: 'class',
   theme: {
     colors: {
       black: colors.black,

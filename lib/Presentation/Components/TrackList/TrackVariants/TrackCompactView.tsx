@@ -27,7 +27,7 @@ export default function TrackCompactView(props: {
 
   return (
     <div 
-      className='flex items-stretch md:hidden py-2.5 select-none focus:bg-neutral-50 hover:bg-neutral-50'
+      className='flex items-stretch md:hidden px-2 py-2.5 select-none focus:bg-neutral-50 dark:focus:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-900'
       onClick={() => play()}
     >
       <div className='flex-1 pr-3'>
