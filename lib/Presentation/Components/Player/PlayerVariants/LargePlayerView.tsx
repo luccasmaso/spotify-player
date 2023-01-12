@@ -57,7 +57,7 @@ export default function LargePlayerView() {
               </div>
 
               <div 
-                className='relative cursor-pointer transition border p-3 flex items-center justify-center rounded-full hover:bg-black hover:border-black dark:hover:bg-white dark:hover:border-white hover:text-black active:top-px'
+                className='relative cursor-pointer transition border p-3 flex items-center justify-center rounded-full hover:bg-black hover:border-black dark:hover:bg-white dark:hover:border-white hover:text-white dark:hover:text-black active:top-px'
                 onClick={() => pause(playbackState === 'playing')}
                 data-cy="play-pause"
               >
