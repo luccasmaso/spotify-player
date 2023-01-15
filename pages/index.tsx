@@ -1,6 +1,5 @@
 import Head from 'next/head'
-
-import PlaylistView from '../lib/Presentation/Components/Playlist/PlaylistView'
+import PlaylistView from '../lib/Components/Playlist/PlaylistView'
 
 export default function Index() {
   return (

@@ -1,6 +1,5 @@
 import Head from 'next/head'
-
-import FavoritesView from '../lib/Presentation/Components/Favorites/FavoritesView'
+import FavoritesView from '../lib/Components/Favorites/FavoritesView'
 
 export default function Favorites() {
   return (

@@ -1,38 +1,23 @@
-import Album from '../../../lib/Data/Models/DataAlbum'
-import Artist from '../../../lib/Data/Models/DataArtist'
-import Image from '../../../lib/Data/Models/DataImage'
-import TrackList from '../../../lib/Data/Models/DataLikedTracks'
-import Track from '../../../lib/Data/Models/DataTrack'
-import PlayTrack from '../../../lib/Domain/UseCases/PlayTrack'
-import FakePlayer from '../../../lib/Domain/Services/FakePlayer'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
 
-import TrackListView from '../../../lib/Presentation/Components/TrackList/TrackListView'
-import TrackView from '../../../lib/Presentation/Components/TrackList/TrackView'
+import TrackListView from '../../../lib/Components/TrackList/TrackListView'
+import TrackView from '../../../lib/Components/TrackList/TrackView'
+import { PlayerProvider } from '../../../lib/Player/PlayerProvider'
 
-import { ContextProvider as UseCasesProvider } from '../../../lib/Presentation/Providers/UseCasesProvider'
-import { ContextProvider as StoreProvider } from '../../../lib/Presentation/Providers/StoreProvider'
+const client = new ApolloClient({ uri: process.env.NEXT_PUBLIC_API_URL, cache: new InMemoryCache() })
+const trackList = [{ id: '', previewUrl: '', durationMs: 0, name: '', album: { name: '', images: [{ url: '' }]}, artists: [{ name: ''}] }]
 
 describe('<TrackListView>', () => {
-  context('Tracks available', () => {
+  context('Tracks unavailable', () => {
     it('Mount empty state', () => {
-      const emptyTrackList = new TrackList("id", "test", [])
-
-      cy.mount(<TrackListView trackList={emptyTrackList} />)
+      cy.mount(<ApolloProvider client={client}><TrackListView trackList={[]} /></ApolloProvider>)
       cy.get('[data-cy="empty-state"]').should('exist')
     })
   })
 
-  context('Tracks unavailable', () => {
+  context('Tracks available', () => {
     it('Mount listing state', () => {
-      const track = new Track("id", "test", "url", 0, new Album("test", [new Image("url")]), [new Artist("test")])
-
-      const trackList = new TrackList("id", "test", [
-        track,
-        track,
-        track
-      ])
-
-      cy.mount(<TrackListView trackList={trackList} />)
+      cy.mount(<ApolloProvider client={client}><TrackListView trackList={trackList} /></ApolloProvider>)
       cy.get('[data-cy="list"]').should('exist')
     })
   })
@@ -40,25 +25,17 @@ describe('<TrackListView>', () => {
 
 describe('<TrackView>', () => {
   it('Verify play behavior', () => {
-    const track = new Track("id", "test", "url", 0, new Album("test", [new Image("url")]), [new Artist("test")])
-    const tracks = [track, track]
-    
-    const trackList = new TrackList("id", "test", tracks)
-
-    const player = new FakePlayer()
-    const playTrack = new PlayTrack(player)
-
     cy.mount(
-      <StoreProvider>
-        <UseCasesProvider useCases={{ playTrack }}>
+      <ApolloProvider client={client}>
+        <PlayerProvider>
           <TrackView 
             position={1} 
             trackList={trackList} 
-            track={tracks[0]} 
+            track={trackList[0]} 
             tableSettings={{ style: "", spacing: ['', '', '', '', ''] }} 
           />
-        </UseCasesProvider>
-      </StoreProvider>
+        </PlayerProvider>
+      </ApolloProvider>
     )
 
     cy.get('[data-cy="track"]').dblclick()
