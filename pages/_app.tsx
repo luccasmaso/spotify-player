@@ -1,33 +1,35 @@
 import '../styles/globals.css'
 
 import type { AppProps } from 'next/app'
-
-import PlayerView from '../lib/Presentation/Components/Player/PlayerView'
-import TabView from '../lib/Presentation/Components/Tab/TabView'
-
-import { ContextProvider as StoreProvider } from '../lib/Presentation/Providers/StoreProvider'
-import { ContextProvider as UseCasesProvider } from '../lib/Presentation/Providers/UseCasesProvider'
-
-import useInitializer from './_initializer'
+import { ApolloProvider } from '@apollo/client'
+import { PlayerProvider } from '../lib/Player/PlayerProvider'
+import PlayerView from '../lib/Components/Player/PlayerView'
+import TabView from '../lib/Components/Tab/TabView'
 import fonts from './_fonts'
+import { client } from '../lib/Apollo'
+import { useEffect, useState } from 'react'
+import { initCache } from '../lib/Apollo/cache'
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [cacheInitialized, setCacheInitialized] = useState(false)
 
-  const config = useInitializer()
+  useEffect(() => { 
+    initCache().then(() => setCacheInitialized(true))
+  }, [])
 
-  if (!config.ready) return
+  if (!cacheInitialized) return <></>
 
   return (
     <div className={`flex flex-col md:w-9/12 m-auto min-h-screen pb-20 ${fonts()}`}>
-      <StoreProvider>
-        <UseCasesProvider useCases={config.useCases!}>
+      <ApolloProvider client={client}>
+        <PlayerProvider>
           <>
             <TabView />
             <Component {...pageProps} />
             <PlayerView />
           </>
-        </UseCasesProvider>
-      </StoreProvider>
+        </PlayerProvider>
+      </ApolloProvider>
     </div>
   )
 }

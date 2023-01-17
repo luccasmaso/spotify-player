@@ -1,6 +1,5 @@
 # Case Study: Spotify Player
 
-
 ### ✏️ Functional requirements
 - As a user, I want to display a playlist and its tracks (only one available)
 - As a user, I want to play/pause a track
@@ -16,21 +15,25 @@
 - Cache-first rendering approach;
 - React / GraphQL / Typescript / Next.js.
 
-### 👀 Edge Cases
+### ⚡️ Edge Cases
 - [x] Keep tracks that are removed from the playlist available in the favorites page.
 - [x] Preserve server's playlist tracks sorting even when new data comes in.
 - [x] Handle unexpected playback errors.
 - [x] Handle API network errors.
-- [ ] Migrate cached data when API schema changes.
-- [ ] Handle rendering optimization for a playlist that has hundreds of thousands of tracks (using infinite scroll, pagination, etc).
   
 ### 🏗️ Application structure
 - `pages/` - Defines the application pages and routing (based on its file names).
-  - `./_initializer` - Initializes dependencies (Database, Repositories, Use cases, etc).
-- `lib/Data/` - Defines Repository Implementations & Data Sources. 
-- `lib/Domain/` - Defines Entities, Use cases & Repository Interfaces (no dependencies with other layers).
-- `lib/Presentation/` - Defines UI Views using ViewModels (which execute Use cases).
-  - `./Hooks/` - Defines stateful logic to be reused between components (manages local state and use cases in the same place).
+- `gql/` - Output directory for generated GraphQL schema types (configured in `codegen.ts`).
+- `lib/` - Defines React function components for rendering 'Tracks', 'Player', etc.
+  - `./Apollo/` - Defines the Apollo client and cache configurations.
+  - `./Components/` - Defines React function components for rendering 'Tracks', 'Player', etc.
+  - `./Helpers/` - Defines common helper functions.
+  - `./Icons/` - Defines a wrapper for the SVG icons dependency (bundled separetly within other node_modules during build - ~1.04kb gzipped)
+
+### ❤️ 'Liked Tracks' Storage
+I decided to store 'liked tracks' locally using the Apollo [Local-only fields](https://www.apollographql.com/docs/react/local-state/managing-state-with-field-policies#storing-and-modifying-local-state-in-the-cache) approach. 
+
+The file `client-schema.graphql` defines a client-side schema and introduces the `likedTracks` query type to write and query from. The `writeQuery` function allows writing data in a shape of a GraphQL query and the `useQuery` to hook subscription for data updates (e.g. when a track is liked).
 
 ### ✅ Testing
 

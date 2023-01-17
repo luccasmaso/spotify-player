@@ -5,7 +5,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   content: [
     "./pages/**/*.{js,jsx,ts,tsx}",
-    "./lib/Presentation/**/*.{js,jsx,ts,tsx}",
+    "./lib/Components/**/*.{js,jsx,ts,tsx}",
   ],
   plugins: [
     require('@tailwindcss/line-clamp')
