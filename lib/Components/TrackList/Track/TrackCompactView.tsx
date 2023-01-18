@@ -26,8 +26,8 @@ export default function TrackCompactView(props: TrackProps & TrackActionsProps) 
           }}
         >
           {props.isLiked()
-            ? <Icon name='heart-[solid]' size={1.5} />
-            : <Icon name='heart' size={1.2} />
+            ? <Icon name='heart-[solid]' size={1.4} />
+            : <Icon name='heart' size={1.4} />
           }
         </div>
       </div>
