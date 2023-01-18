@@ -5,7 +5,7 @@ import { TrackItemFragment } from '../../../../gql/graphql'
 import { usePlayer } from '../../../Player/PlayerProvider'
 import TrackCompactView from './TrackCompactView'
 import TrackDetailedView from './TrackDetailedView'
-import { GET_LIKED_TRACKS } from '../../../Apollo/cache'
+import { GET_LIKED_TRACKS } from '../../../Apollo/Cache'
 import { TRACK_FRAGMENT } from '../TrackListView'
 
 export type TrackProps = {

@@ -1,5 +1,5 @@
 import { ApolloClient } from '@apollo/client'
-import { cache } from './cache'
+import { cache } from './Cache'
 
 export const client = new ApolloClient({
   cache: cache,

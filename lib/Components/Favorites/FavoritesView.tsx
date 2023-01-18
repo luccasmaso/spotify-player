@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import TrackListView from '../TrackList/TrackListView'
 import ErrorView from './ErrorView'
 import SkeletonView from './SkeletonView'
-import { GET_LIKED_TRACKS } from '../../Apollo/cache'
+import { GET_LIKED_TRACKS } from '../../Apollo/Cache'
 
 export default function FavoritesView() {
   const { loading, error, data, refetch } = useQuery(GET_LIKED_TRACKS)

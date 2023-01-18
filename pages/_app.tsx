@@ -6,9 +6,9 @@ import { PlayerProvider } from '../lib/Player/PlayerProvider'
 import PlayerView from '../lib/Components/Player/PlayerView'
 import TabView from '../lib/Components/Tab/TabView'
 import fonts from './_fonts'
-import { client } from '../lib/Apollo'
+import { client } from '../lib/Apollo/Client'
 import { useEffect, useState } from 'react'
-import { initCache } from '../lib/Apollo/cache'
+import { initCache } from '../lib/Apollo/Cache'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [cacheInitialized, setCacheInitialized] = useState(false)

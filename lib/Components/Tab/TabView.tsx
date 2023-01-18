@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 
 import TabItemView from './TabItemView'
-import { GET_LIKED_TRACKS } from '../../Apollo/cache'
+import { GET_LIKED_TRACKS } from '../../Apollo/Cache'
 
 export default function TabView() {
   const { data } = useQuery(GET_LIKED_TRACKS)

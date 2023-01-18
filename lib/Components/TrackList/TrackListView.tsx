@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { FragmentType, graphql, useFragment } from '../../../gql'
-import { GET_LIKED_TRACKS } from '../../Apollo/cache'
+import { GET_LIKED_TRACKS } from '../../Apollo/Cache'
 import EmptyStateView from './EmptyStateView'
 import TrackView from './Track/TrackView'
 
