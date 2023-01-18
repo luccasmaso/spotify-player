@@ -44,6 +44,7 @@ The file `client-schema.graphql` defines a client-side schema and introduces the
 
 - Clone this repo
 - `npm install` to install all dependencies
+- `npm run codegen` to generate GraphQL schema types
 - `npm run dev` to start the local server
 
 The app should now be up and running at http://localhost:3000 🚀
