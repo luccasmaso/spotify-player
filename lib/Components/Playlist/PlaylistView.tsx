@@ -36,7 +36,7 @@ export default function PlaylistView() {
         <div className='font-bold text-3xl md:text-4xl'>{data!.playlist.name}</div>
       </div>
 
-      <hr className='text-neutral-200 dark:text-neutral-700 mt-5 mb:6 md:mb-10' />
+      <hr className='text-neutral-200 dark:text-neutral-700 mt-5 mb-6 md:mb-10' />
 
       <TrackListView trackList={trackList} />
     </>
