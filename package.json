@@ -1,6 +1,6 @@
 {
-  "name": "shotgun-spotify",
-  "version": "0.2.0",
+  "name": "spotify-player",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

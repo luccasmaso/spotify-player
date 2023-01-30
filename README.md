@@ -48,5 +48,3 @@ The file `client-schema.graphql` defines a client-side schema and introduces the
 - `npm run dev` to start the local server
 
 The app should now be up and running at http://localhost:3000 🚀
-
-Reference: https://shotguntheapp.notion.site/Case-Study-Spotify-Player-7f8417391b9e43ba9f351870949a0559
